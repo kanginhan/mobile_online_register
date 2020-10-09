@@ -17,6 +17,9 @@
                 document.getElementById("RegFm").addEventListener("submit", function (event) {
                     event.preventDefault();
                     emailjs.sendForm("service_z4l7v66", "template_603jw7e", this);
+                    
+                    alert("U+ 알뜰폰 신청이 정상적으로 완료되었습니다\n빠른 시일내에 확인 후 연락드리도록 하겠습니다");
+                    setTimeout(function() { location.reload() }, 0);
                 });
             };
         </script>
