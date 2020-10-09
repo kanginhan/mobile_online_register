@@ -1,0 +1,345 @@
+@charset "euc-kr";
+/* CSS Document */
+
+/* default setting */
+/* 서식지 업데이트 2018-10-31 */
+
+html {overflow-y:auto}
+body{font:12px 'Apple Gothic','DroidSansFallback','맑은 고딕',Malgun Gothic,돋움,dotum,굴림,gulim,san-serif; color:#555;font-weight:normal;}
+a{color:#242424; text-decoration:none}
+a:hover{color:#00a9c7; text-decoration:none;}
+a:active{background-color:transparent}
+
+
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,form,fieldset,p,blockquote{margin:0;padding:0;}
+hr,legend {display:none;}
+img, fieldset {border:0 none;}
+ul,ol,li{list-style:none outside;}
+img,input,select,textarea{vertical-align:middle; text-decoration:none;}
+table{border-collapse:collapse;}
+em{font-style:normal;}
+
+
+
+
+
+/*INPUT*/
+input.textarea {vertical-align:middle;font-size:11px;color:#666;border:1px solid #ccc;padding:0; margin:0;}
+input.text {border:1px solid #cacaca; padding:0px 0px 0px 0px; color:#666; height:22px;}
+input.radio {vertical-align:middle;}
+input.image {vertical-align:middle;}
+input.checkbox {border:0 none; width:5px;}
+
+input.select {
+	vertical-align:middle;
+	font-size:1em;
+	color:#666;
+	font-weight:bold;	
+	font-family:Dotum, Arial, verdana;
+	padding:0px;
+	margin:0px;
+	height:17px;
+	border:1px solid #d7d7d7;
+}
+
+.select {
+	vertical-align:middle;
+	font-size:14px;
+	color:#333;
+	font-weight:bold;	
+	font-family:'Apple Gothic','DroidSansFallback','맑은 고딕',Malgun Gothic,돋움,dotum,굴림,gulim,san-serif;
+	padding:0px;
+	margin:0px;
+	height:28px;
+	border:1px solid #9b9b9b;
+}
+
+.iptTxtsj{
+	color:#333;
+	font-size:12px;
+	font-weight:nomal;
+	font-family:'Apple Gothic','DroidSansFallback','맑은 고딕',Malgun Gothic,돋움,dotum,굴림,gulim,san-serif;
+	height:22px;
+	line-height:10px;
+	background:#FFF;
+	border:1px solid #ebebeb;
+	font-weight:bold;
+	text-align:center;
+	padding-right: 5px;
+	padding-bottom: 2px;
+	padding-left: 2px;
+}
+.iptTxtsms{
+	color:#333;
+	font-size:12px;	
+	font-weight:bold;
+	font-family:'Apple Gothic','DroidSansFallback','맑은 고딕',Malgun Gothic,돋움,dotum,굴림,gulim,san-serif;
+	height:16px;
+	width:105px;
+	line-height:10px;
+	background:#FFF;
+	border:1px solid #9b9b9b;
+	padding-right: 0;
+	padding-bottom: 2px;
+	padding-left: 4px;
+}
+
+.iptTxtsms2{
+	line-height:14px; 
+	width:98%; 
+	height:40px; 
+	border:1px solid #c0c0c0; 
+	padding:2px; 
+	font-size:12px; 
+	font-family:'Apple Gothic','DroidSansFallback','맑은 고딕',Malgun Gothic,돋움,dotum,굴림,gulim,san-serif;
+	overflow-x:hidden; 
+	overflow-y:hidden; 
+	background:#fefef6; 
+	letter-spacing:normal; 
+	color:#333333;
+}
+
+.iptTxt13{
+	color:#333;
+	font-size:14px;
+	font-weight:nomal;
+	font-family:'Apple Gothic','DroidSansFallback','맑은 고딕',Malgun Gothic,돋움,dotum,굴림,gulim,san-serif;
+	height:30px;
+	line-height:22px;
+	background:#FFF;
+	border:1px solid #CCCCCC;
+	padding-top: 0px;
+	padding-right: 0;
+	padding-bottom: 0;
+	padding-left: 4px;
+	margin-left:3px;
+	margin-top:3px;
+	margin-bottom:3px;
+}
+
+.iptTxt13m{
+	color:#333;
+	font-size:24px;
+	font-weight:nomal;
+	font-family:'Apple Gothic','DroidSansFallback','맑은 고딕',Malgun Gothic,돋움,dotum,굴림,gulim,san-serif;
+	height:40px;
+	line-height:22px;
+	background:#FFF;
+	border:1px solid #CCCCCC;
+	padding-top: 0px;
+	padding-right: 0;
+	padding-bottom: 0;
+	padding-left: 4px;
+	margin-left:3px;
+	margin-top:3px;
+	margin-bottom:3px;
+}
+
+.iptTxt13b{
+	color:#333;
+	font-size:14px;
+	font-weight:bold;
+	font-family:'Apple Gothic','DroidSansFallback','맑은 고딕',Malgun Gothic,돋움,dotum,굴림,gulim,san-serif;
+	height:30px;
+	line-height:22px;
+	background:#FFF;
+	border:1px solid #CCCCCC;
+	padding-top: 0px;
+	padding-right: 0;
+	padding-bottom: 0;
+	padding-left: 4px;
+	margin-left:3px;
+	margin-top:3px;
+	margin-bottom:3px;
+}
+
+.iptTxt13b2{
+	color:#333;
+	font-size:14px;
+	font-weight:bold;
+	font-family:'Apple Gothic','DroidSansFallback','맑은 고딕',Malgun Gothic,돋움,dotum,굴림,gulim,san-serif;
+	height:30px;
+	line-height:22px;
+	background:#FFF;
+	border:2px solid #CCC;
+	padding-top: 0px;
+	padding-right: 0;
+	padding-bottom: 0;
+	padding-left: 4px;
+	margin-left:3px;
+	margin-top:3px;
+	margin-bottom:3px;
+}
+
+.iptTxt13bm{
+	color:#333;
+	font-size:24px;
+	font-weight:bold;
+	font-family:'Apple Gothic','DroidSansFallback','맑은 고딕',Malgun Gothic,돋움,dotum,굴림,gulim,san-serif;
+	height:40px;
+	line-height:22px;
+	background:#FFF;
+	border:1px solid #CCCCCC;
+	padding-top: 0px;
+	padding-right: 0;
+	padding-bottom: 0;
+	padding-left: 4px;
+	margin-left:3px;
+	margin-top:3px;
+	margin-bottom:3px;
+}
+
+.iptTxturl{
+	color:#333;
+	font-size:12px;
+	font-weight:nomal;
+	font-family:'Apple Gothic','DroidSansFallback','맑은 고딕',Malgun Gothic,돋움,dotum,굴림,gulim,san-serif;
+	height:30px;
+	width:88%;
+	background:#FFF;
+	border:1px solid #CCCCCC;
+	padding-top: 0px;
+	padding-left: 2px;
+	margin-left:5px;
+	margin-right:5px;
+}
+
+
+.upload{margin:0 4px 0 0;_margin:0;padding:4px 0 4px 4px;border:solid 1px #d5d5d5;color:#a1a1a1;font-size:12px;border-right-color:#efefef;border-bottom-color:#efefef;length:300px;}
+
+
+
+.order{position:relative; margin:0; padding:0; text-align:center; background-color:#FFFFFF; width:100%;}
+.order_900{width:100%; max-width:900px; margin:0px auto; padding-bottom:40px;}
+
+.order_900 p{line-height:1.0;font-size:0px; text-align:left; padding-top:15px;margin-bottom:10px}
+.order_900 p .title{color:#000; font-size:16px;font-weight:bold;letter-spacing:-1px;}
+
+/*예약알림 타이틀 2018-11-26*/
+.order_700{width:100%; max-width:700px; margin:0px auto; padding-bottom:40px;}
+.order_700 .rtitle{color:#000; font-size:2.000em; font-weight:bold; letter-spacing:-1px; text-align:cetner; line-height:1.2; padding-top:30px;padding-bottom:20px; border-bottom:3px #333333 solid; margin-bottom:20px}
+.order_700 .rcopy{color:#999; font-size:0.833em; font-weight:normal; letter-spacing:-0.3px; text-align:cetner; line-height:1.2; padding-top:40px;}
+
+
+.order_bottom{margin:0px auto; width:100%; max-width:900px; background-color:#f9f9f9; border:1px solid #dddddd; box-sizing:border-box; color:#666666; font-size:12px; font-weight:normal; margin-top:20 10px; padding:10 20px; line-height:1.8; text-align:left}
+
+.order_bt{margin:0px auto; width:100%; max-width:900px; text-align:center; padding-top:30px; padding-bottom:50px; background:none; no-repeat 0 0px}
+.order_bt a{border:0px}
+.order_bt a img{filter:alpha(opacity=100);opacity:1; min-height:60px;}
+.order_bt a:hover img{filter:alpha(opacity=60);opacity:0.6;}
+
+
+.order_btm{margin:0px auto; width:100%; max-width:900px; text-align:center; padding-top:30px; padding-bottom:50px; background:none; no-repeat 0 0px}
+.order_btm a{border:0px}
+.order_btm a img{filter:alpha(opacity=100);opacity:1; min-height:100px;}
+.order_btm input{filter:alpha(opacity=100);opacity:1; min-height:100px;}
+.order_btm a:hover img{filter:alpha(opacity=60);opacity:0.6;}
+
+
+
+.w735{width:740px}
+.w735 img{width:95%}
+
+.w95{width:95%;color:#000; letter-spacing:-0.5px;overflow-x:hidden}
+.w95 img{width:100%;max-width:730px}
+.w95 p{font-size:14px; line-height:1.2}
+.w95 p img{width:100%;max-width:730px}
+
+.w100{width:100%}
+.w100 img{max-width:95%}
+
+.w900{width:100%; padding:9px}
+.w900 img{max-width:100%}
+.w900 p{color:#000;font-size:14px;letter-spacing:-0.5px;line-height:1.2;margin-bottom:0px}
+
+.w700{width:100%; font-size:14px;letter-spacing:-0.5px;line-height:1.4;margin-bottom:30px}
+.w700 img{max-width:700px}
+
+
+
+/*서식지 기본 테이블 PC*/
+.otable {width:100%; border-top:3px #d3d3d3 solid; border-bottom:3px #d3d3d3 solid; border-left:1px #d3d3d3 solid; border-right:1px #d3d3d3 solid; background:#FFFFFF; color:#333333; margin-bottom:10px}
+.otable td {word-break:break-all;border-bottom:1px solid #d3d3d3; border-right:1px solid #d3d3d3; border-left:1px solid #d3d3d3; background:#FFFFFF; vertical-align:middle; line-height:1.6;font-size:13px; padding-top:3px; padding-bottom:5px; padding-left:10px; padding-right:10px; text-align:left; line-height:1.5}
+.otable .td p {color:#333; font-size:13px; line-height:1.5; padding:0px}
+.otable .title {width:15%; background:#f3f3f3; line-height:1.5; text-align:center; font-weight:bold; font-size:13px; color:#333; letter-spacing:-1px}
+.otable .title span {font-weight:normal;color:#ED4C00;font-size:12px}
+
+.otable td span {color:#ED4C00;font-weight:bold;}
+
+/*서식지 레드 테이블 PC*/
+.otable2 {width:100%; border-top:3px #d2a9a9 solid; border-bottom:3px #d2a9a9 solid; border-left:1px #d2a9a9 solid; border-right:1px #d2a9a9 solid; background:#FFFFFF; color:#333333; margin-bottom:10px}
+.otable2 td {border-bottom:1px solid #d2a9a9; border-right:1px solid #d2a9a9; border-left:1px solid #d2a9a9; background:#FFFFFF; vertical-align:middle; line-height:1.6;font-size:13px; padding-top:3px; padding-bottom:5px; padding-left:10px; padding-right:10px; text-align:left; line-height:1.5}
+.otable2 .td p {color:#333; font-size:13px; line-height:1.5; padding:0px}
+.otable2 .title {width:15%; background:#fbebeb; line-height:1.5; text-align:center; font-weight:bold; font-size:13px; color:#333; letter-spacing:-1px}
+.otable2 .title span {font-weight:normal;color:#ff0000;font-size:12px}
+
+.otable2 td span {color:#ff0000;font-weight:bold;}
+
+/*서식지 레드추가 테이블 PC*/
+.otable22 {width:100%; border-top:3px #930000 solid; border-bottom:3px #930000 solid; border-left:1px #930000 solid; border-right:1px #930000 solid; background:#FFFFFF; color:#333333; margin-bottom:10px}
+.otable22 td {border-bottom:1px solid #930000; border-right:1px solid #930000; border-left:1px solid #930000; background:#FFFFFF; vertical-align:middle; line-height:1.6;font-size:13px; padding-top:3px; padding-bottom:5px; padding-left:10px; padding-right:10px; text-align:left; line-height:1.5}
+.otable22 .td p {color:#333; font-size:13px; line-height:1.5; padding:0px}
+.otable22 .title {width:15%; background:#cc0000; line-height:1.5; text-align:center; font-weight:bold; font-size:13px; color:#FFF; letter-spacing:-1px}
+.otable22 .title span {font-weight:normal;color:#ff0000;font-size:12px}
+
+.otable22 td span {color:#ff0000;font-weight:bold;}
+
+
+/*IC서식지 레드 테이블 PC*/
+.otable3 {width:100%; border-top:3px #d2a9a9 solid; border-bottom:3px #d2a9a9 solid; border-left:1px #d2a9a9 solid; border-right:1px #d2a9a9 solid; background:#FFFFFF; color:#333333; margin-bottom:10px}
+.otable3 td {border-bottom:1px solid #d2a9a9; border-right:1px solid #d2a9a9; border-left:1px solid #d2a9a9; background:#FFFFFF; vertical-align:middle; line-height:1.6;font-size:13px; padding-top:8px; padding-bottom:10px; padding-left:10px; padding-right:10px; text-align:left; line-height:1.5;letter-spacing:-0.5px}
+.otable3 .td p {color:#333; font-size:13px; line-height:1.5; padding:0px}
+.otable3 .title {width:15%; background:#fbebeb; line-height:1.5; text-align:center; font-weight:bold; font-size:13px; color:#333; letter-spacing:-1px}
+.otable3 .title span {font-weight:normal;color:#ff0000;font-size:12px}
+
+.otable3 td span {color:#ff0000;font-weight:bold;}
+
+
+/*서식지 기본 테이블 모바일*/
+.otablem {width:100%; border-top:3px #d3d3d3 solid; border-bottom:3px #d3d3d3 solid; border-left:1px #d3d3d3 solid; border-right:1px #d3d3d3 solid; background:#FFFFFF; color:#333333; margin-bottom:10px}
+.otablem td {width:75%; border-bottom:1px solid #d3d3d3; border-right:1px solid #d3d3d3; border-left:1px solid #d3d3d3; background:#FFFFFF; vertical-align:middle; line-height:1.6;font-size:24px; padding-top:8px; padding-bottom:5px; padding-left:10px; padding-right:10px; text-align:left; line-height:1.5}
+.otablem .td p {color:#333; font-size:24px; line-height:1.5; padding:0px}
+.otablem .title {width:25%; background:#f3f3f3; line-height:1.2; text-align:center; font-weight:bold; font-size:24px; color:#333; letter-spacing:-1px}
+.otablem .title span {font-weight:normal;color:#ff0000;font-size:18px}
+.otablem td span {color:#ff0000;font-weight:bold;}
+
+/*서식지 레드 테이블 모바일*/
+.otable2m {width:100%; border-top:3px #d2a9a9 solid; border-bottom:3px #d2a9a9 solid; border-left:1px #d2a9a9 solid; border-right:1px #d2a9a9 solid; background:#FFFFFF; color:#333333; margin-bottom:10px}
+.otable2m td {width:75%; border-bottom:1px solid #d2a9a9; border-right:1px solid #d2a9a9; border-left:1px solid #d2a9a9; background:#FFFFFF; vertical-align:middle; line-height:1.6;font-size:24px; padding-top:8px; padding-bottom:5px; padding-left:10px; padding-right:10px; text-align:left; line-height:1.5}
+.otable2m td img {width:100%}
+.otable2m .td p {color:#333; font-size:24px; line-height:1.5; padding:0px}
+.otable2m .title {width:25%; background:#fbebeb; line-height:1.2; text-align:center; font-weight:bold; font-size:24px; color:#333; letter-spacing:-1px}
+.otable2m .title span {font-weight:normal;color:#ff0000;font-size:18px}
+.otable2m td span {color:#ff0000;font-weight:bold;}
+
+
+/*예약알림 기본 테이블 2018-11-26*/
+.rtable {width:100%; border:0px; background:#FFFFFF; color:#333333; margin-bottom:20px}
+.rtable td {border-bottom:1px solid #d3d3d3; background:#FFFFFF; vertical-align:middle; line-height:1.6;font-size:14px; padding-top:5px; padding-bottom:7px; padding-left:10px; padding-right:10px; text-align:left; line-height:1.5; letter-spacing:-1px}
+.rtable .td p {color:#333; font-size:13px; line-height:1.5; padding:0px}
+.rtable .title {width:28%; background:#FFFFFF; line-height:1.5; text-align:center; font-weight:bold; font-size:14px; color:#333;}
+.rtable .title span {font-weight:bold; color:#FF0000}
+
+.rtable td span {color:#FF5E00;font-size:12px}
+
+
+
+/*이미지오버 2019-09-21*/
+.imgover {text-align:center; padding-top:15px; padding-bottom:30px; background:none; no-repeat 0 0px;}
+.imgover a{padding:0 0px;}
+.imgover a img{filter:alpha(opacity=100);opacity:1;}
+.imgover a input{filter:alpha(opacity=100);opacity:1;}
+.imgover a:hover img{filter:alpha(opacity=60);opacity:0.6;}
+.imgover a:hover input{filter:alpha(opacity=60);opacity:0.6;}
+
+/*input 마우스오버 2019-09-20*/
+.ipbt{
+	border:0px;
+	padding-top:0px;
+}
+
+.ipbt:hover{
+	border:0px;
+	padding-top:0px;
+	filter:alpha(opacity=60);opacity:0.6;
+}

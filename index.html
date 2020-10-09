@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>U+ 알뜰폰 온라인 신청서</title>
+        <link rel="stylesheet" type="text/css" href="/css/main.css" />
+        <script src="/js/jquery-1.6.1.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+        <script type="text/javascript">
+            (function () {
+                emailjs.init("user_qlV684Rp5lGAe1yESBlBA");
+            })();
+        </script>
+        <script type="text/javascript">
+            window.onload = function () {
+                document.getElementById("RegFm").addEventListener("submit", function (event) {
+                    event.preventDefault();
+                    emailjs.sendForm("service_z4l7v66", "template_603jw7e", this);
+                });
+            };
+        </script>
+        <script>
+            function selectAge(val) {
+                objTr = document.getElementsByName("utr");
+                if (val.indexOf("Y") != -1) {
+                    //미성년
+                    for (var i = 0; i < objTr.length; i++) objTr[i].style.display = "block";
+                } else {
+                    for (var i = 0; i < objTr.length; i++) objTr[i].style.display = "none";
+                }
+            }
+            function setaddr() {
+                RegFm.rzip.value = RegFm.zip.value;
+                RegFm.raddr1.value = RegFm.addr1.value;
+                RegFm.raddr2.value = RegFm.addr2.value;
+            }
+            function setaddr1() {
+                RegFm.pzip.value = RegFm.zip.value;
+                RegFm.paddr1.value = RegFm.addr1.value;
+                RegFm.paddr2.value = RegFm.addr2.value;
+            }
+            function formCheck() {
+                var frm = document.RegFm;
+
+                if (!frm.condition_chk.checked) {
+                    alert("판매조건 안내사항에 동의 하셔야 합니다.       ");
+                    frm.condition_chk.focus();
+                    return false;
+                }
+
+                if (!frm.uname.value) {
+                    alert("신청자명을 입력하세요.    ");
+                    frm.uname.focus();
+                    return false;
+                }
+
+                if (!frm.birth.value) {
+                    alert("생년월일(6자리)를 입력하세요.    ");
+                    frm.birth.focus();
+                    return false;
+                }
+
+                for (i = 0; i < frm["hp2[]"].length; i++) {
+                    if (!frm["hp2[]"][i].value) {
+                        alert("비상연락처(해피콜 받을 번호)를 입력하여 주십시오.     ");
+                        frm["hp2[]"][i].focus();
+                        return false;
+                    }
+                }
+                /*
+                 */
+
+                if (!emailCheck(frm.email.value)) {
+                    alert("올바른 E-Mail을 입력하세요.   ");
+                    frm.email.focus();
+                    return false;
+                }
+
+                if (!frm.zip.value) {
+                    alert("우편번호를 입력하여 주십시오.     ");
+                    frm.zip.focus();
+                    return false;
+                }
+
+                if (!frm.addr1.value) {
+                    alert("주소를 입력하여 주십시오.     ");
+                    frm.addr1.focus();
+                    return false;
+                }
+
+                if (!frm.addr2.value) {
+                    alert("세부주소를 입력하여 주십시오.     ");
+                    frm.addr2.focus();
+                    return false;
+                }
+
+                /* */
+
+                if (!frm.pzip.value) {
+                    alert("우편번호를 입력하여 주십시오.     ");
+                    frm.pzip.focus();
+                    return false;
+                }
+
+                if (!frm.paddr1.value) {
+                    alert("주소를 입력하여 주십시오.     ");
+                    frm.paddr.focus();
+                    return false;
+                }
+                if (!frm.paddr2.value) {
+                    alert("세부주소를 입력하여 주십시오.     ");
+                    frm.paddr2.focus();
+                    return false;
+                }
+
+                if (!frm.bank.value) {
+                    alert("은행명을 입력하여 주십시오.     ");
+                    frm.bank.focus();
+                    return false;
+                }
+                if (!frm.banknum.value) {
+                    alert("계좌번호를 입력하여 주십시오.     ");
+                    frm.banknum.focus();
+                    return false;
+                }
+                if (!frm.bankowner.value) {
+                    alert("예금주를 입력하여 주십시오.     ");
+                    frm.bankowner.focus();
+                    return false;
+                }
+                if (!frm.owner_real.value) {
+                    alert("가입자와의 관계를 입력하여 주십시오.     ");
+                    frm.owner_real.focus();
+                    return false;
+                }
+                if (!frm.owner_birth.value) {
+                    alert("예금주 생년월일을 입력하여 주십시오.     ");
+                    frm.owner_birth.focus();
+                    return false;
+                }
+
+                if (!frm.rname.value) {
+                    alert("수령인을 입력하여 주십시오.     ");
+                    frm.rname.focus();
+                    return false;
+                }
+
+                if (!frm.rzip.value) {
+                    alert("배송지 우편번호를 입력하여 주십시오.     ");
+                    frm.rzip.focus();
+                    return false;
+                }
+                if (!frm.raddr1.value) {
+                    alert("배송지 주소를 입력하여 주십시오.     ");
+                    frm.raddr.focus();
+                    return false;
+                }
+                if (!frm.raddr2.value) {
+                    alert("배송지 세부주소를 입력하여 주십시오.     ");
+                    frm.raddr2.focus();
+                    return false;
+                }
+
+                for (i = 0; i < frm["rhp[]"].length; i++) {
+                    if (!frm["rhp[]"][i].value) {
+                        alert("배송지 연락처를 입력하여 주십시오.     ");
+                        frm["rhp[]"][i].focus();
+                        return false;
+                    }
+                }
+
+                if (!frm.yak_chk.checked) {
+                    alert("약관 동의서 및 개인정보 취급방침에 동의합니다 에 동의 하셔야 합니다.       ");
+                    frm.yak_chk.focus();
+                    return false;
+                }
+                if (!frm.hap_chk.checked) {
+                    alert("위 내용을 확인하고 동의합니다 에 동의 하셔야 합니다.       ");
+                    frm.hap_chk.focus();
+                    return false;
+                }
+            }
+            function emailCheck(email_address) {
+                email_regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
+                if (!email_regex.test(email_address)) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        </script>
+
+        <script language="javascript">
+            var isNN = navigator.appName.indexOf("Netscape") != -1;
+            function autoTab(input, len, e) {
+                var keyCode = isNN ? e.which : e.keyCode;
+                var filter = isNN ? [0, 8, 9] : [0, 8, 9, 16, 17, 18, 37, 38, 39, 40, 46];
+                if (input.value.length >= len && !containsElement(filter, keyCode)) {
+                    input.value = input.value.slice(0, len);
+                    input.form[(getIndex(input) + 1) % input.form.length].focus();
+                }
+                function containsElement(arr, ele) {
+                    var found = false,
+                        index = 0;
+                    while (!found && index < arr.length)
+                        if (arr[index] == ele) found = true;
+                        else index++;
+                    return found;
+                }
+                function getIndex(input) {
+                    var index = -1,
+                        i = 0,
+                        found = false;
+                    while (i < input.form.length && index == -1)
+                        if (input.form[i] == input) index = i;
+                        else i++;
+                    return index;
+                }
+                return true;
+            }
+        </script>
+
+        <script src="https://spi.maps.daum.net/imap/map_js_init/postcode.v2.js"></script>
+
+        <script>
+            function DaumPostcodeP() {
+                new daum.Postcode({
+                    oncomplete: function (data) {
+                        // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                        // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                        // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                        var fullAddr = ""; // 최종 주소 변수
+                        var extraAddr = ""; // 조합형 주소 변수
+
+                        // 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                        if (data.userSelectedType === "R") {
+                            // 사용자가 도로명 주소를 선택했을 경우
+                            fullAddr = data.roadAddress;
+                        } else {
+                            // 사용자가 지번 주소를 선택했을 경우(J)
+                            fullAddr = data.jibunAddress;
+                        }
+
+                        // 사용자가 선택한 주소가 도로명 타입일때 조합한다.
+                        if (data.userSelectedType === "R") {
+                            //법정동명이 있을 경우 추가한다.
+                            if (data.bname !== "") {
+                                extraAddr += data.bname;
+                            }
+                            // 건물명이 있을 경우 추가한다.
+                            if (data.buildingName !== "") {
+                                extraAddr += extraAddr !== "" ? ", " + data.buildingName : data.buildingName;
+                            }
+                            // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
+                            fullAddr += extraAddr !== "" ? " (" + extraAddr + ")" : "";
+                        }
+
+                        // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                        document.getElementById("pzip").value = data.zonecode; //5자리 새우편번호 사용
+                        document.getElementById("paddr1").value = fullAddr;
+
+                        // 커서를 상세주소 필드로 이동한다.
+                        document.getElementById("paddr2").focus();
+                    },
+                }).open();
+            }
+        </script>
+        <!-- -->
+        <style type="text/css" media="print">
+            .noprint {
+                display: none;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div
+            style="
+                margin: 0px auto;
+                width: 100%;
+                max-width: 900px;
+                font: 2.667em 'Apple Gothic', 'DroidSansFallback', '맑은 고딕', Malgun Gothic, 돋움, dotum, 굴림, gulim,
+                    san-serif;
+                font-weight: bold;
+                letter-spacing: -1px;
+                text-align: center;
+                line-height: 1.2;
+                padding-top: 30px;
+                padding-bottom: 20px;
+                border-bottom: 3px #666666 solid;
+                margin-bottom: 10px;
+            "
+        >
+            <!-- 2019-05-16 타이틀 수정-->
+            <img src="http://smartadmin.negagea.kr/_image/logo/hit_umobi.jpg" style="margin-bottom: 5px" />
+            온라인 신청서
+        </div>
+        <!--타이틀-->
+        <div
+            style="
+                font-size: 16px;
+                text-align: center;
+                padding-top: 10px;
+                padding-bottom: 25px;
+                color: #666666;
+                letter-spacing: -0.5px;
+                line-height: 1.8;
+            "
+        >
+            <b>본사가 보증하는 공식 판매 인증 채널을 통해 이동통신 서비스에 가입됩니다!</b>
+            <div style="font-size: 13px; color: #ff0000">
+                가입자명, 개통번호(휴대폰번호)를 입력해주세요!
+                <b>작성하신 정보는 상담(해피콜) 및 접수 확인 외에 다른 용도로 사용되지 않습니다.</b>
+            </div>
+        </div>
+        <!-- -->
+        <div class="order">
+            <div class="order_900">
+                <!-- -->
+                <form name="RegFm" id="RegFm" onSubmit="return formCheck()">
+                    <!-- <input type="hidden" name="mode" value="add" />
+                    <input type="hidden" name="product" value="763" />
+                    <input type="hidden" name="ptype" value="11" />
+                    <input type="hidden" name="seller" value="bnkmvno" />
+                    <input type="hidden" name="opener" value="" />
+                    <input type="hidden" name="referer" value="" /> -->
+                    <table width="100%" class="otable">
+                        <tr>
+                            <td class="title">신청상품</td>
+                            <td style="width: 35%; letter-spacing: -0.5px">
+                                <b>U+알뜰모바일&nbsp;U+알뜰모바일 선불유심&nbsp;</b>
+                            </td>
+                            <td class="title">가입구분</td>
+                            <td style="width: 35%"><b>신규가입</b></td>
+                        </tr>
+                        <tr>
+                            <td class="title">출고가</td>
+                            <td><b>0원</b></td>
+                            <td class="title">할부원금</td>
+                            <td style="background-color: #fff2f2"><span>0원</span></td>
+                        </tr>
+                        <tr>
+                            <td class="title">약정기간</td>
+                            <td>1개월</td>
+                            <td class="title">가입비 / 유심비</td>
+                            <td>0원 (면제) / 0원 (면제)</td>
+                        </tr>
+                        <tr>
+                            <td class="title">요금제 선택</td>
+                            <td>
+                                <select
+                                    name="callplan"
+                                    class="select"
+                                    style="width: 98%; overflow-x: hidden; height: 24px; font-size: 14px"
+                                >
+                                    <option value="선불 300MB_1Mbps(음성&문자:무제한/데이터300MB+1Mbps무제한)">
+                                        선불 300MB_1Mbps(음성&문자:무제한/데이터300MB+1Mbps무제한)
+                                    </option>
+                                    <option value="선불10GB/100분(음성&문자100분100건/데이터10GB)">
+                                        선불10GB/100분(음성&문자100분100건/데이터10GB)
+                                    </option>
+                                    <option value="선불300MB(음성&문자:무제한/데이터300MB+3Mbps무제한)">
+                                        선불300MB(음성&문자:무제한/데이터300MB+3Mbps무제한)
+                                    </option>
+                                    <option value="선불15GB+/100분(음성&문자100분100건/데이터15GB+3Mbps무제한)">
+                                        선불15GB+/100분(음성&문자100분100건/데이터15GB+3Mbps무제한)
+                                    </option>
+                                    <option value="선불11GB+(음성&문자:무제한/데이터11GB+3Mbps무제한)">
+                                        선불11GB+(음성&문자:무제한/데이터11GB+3Mbps무제한)
+                                    </option>
+                                    <option
+                                        value="선불 데이터 통화 마음껏(음성&문자:무제한/데이터11GB+일2GB+3Mbps무제한)"
+                                    >
+                                        선불 데이터 통화 마음껏(음성&문자:무제한/데이터11GB+일2GB+3Mbps무제한)
+                                    </option>
+                                </select>
+                            </td>
+                            <td class="title">색상 선택</td>
+                            <td>
+                                <select
+                                    name="hpcolor"
+                                    class="select"
+                                    style="width: 98%; overflow-x: hidden; height: 24px; font-size: 14px"
+                                >
+                                    <option value="멀티유심 (전단말기호환가능)">멀티유심 (전단말기호환가능)</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="title">보조금 안내</td>
+                            <td colspan="3">♥ 개통시 첫달 기본료전액 무료충전 ♥</td>
+                        </tr>
+                        <tr>
+                            <td class="title">판매조건 안내사항</td>
+                            <td colspan="3">
+                                <div
+                                    class="w95"
+                                    style="
+                                        padding-top: 8px;
+                                        margin-bottom: 20px;
+                                        width: 100%;
+                                        height: 180px;
+                                        overflow-y: scllor;
+                                        line-height: 1.2;
+                                    "
+                                >
+                                    <p style="text-align: center" align="center">
+                                        ★ 명의도용 / 불법스팸 (도박/대출/성인광고/보이스피싱) 의 목적으로 가입시&nbsp;
+                                    </p>
+                                    <p style="text-align: center" align="center">
+                                        민형사상 책임을 물을수 있습니다. 해당목적으로의 가입은 절대불가합니다.
+                                    </p>
+                                    <p style="text-align: center" align="center">&nbsp;</p>
+                                    <p style="text-align: center" align="center">
+                                        ■ 신용불량,연체,개인파산,개인회생 무관 모두 다 개통가능합니다.
+                                    </p>
+                                    <p style="text-align: center" align="center">&nbsp;</p>
+                                    <p style="text-align: center" align="center">
+                                        &#8203;■&nbsp;&#8203;신분증 첨부시 여권불가 (운전면허증,주민등록증,복지카드가능)
+                                    </p>
+                                    <p style="text-align: center" align="center">&nbsp;</p>
+                                    <p style="text-align: center" align="center">&nbsp;</p>
+                                    <p style="text-align: center" align="center">
+                                        <span style="color: rgb(51, 51, 51)"
+                                            >&nbsp;<b
+                                                >&nbsp;개통필요서류는 신청서에 파일첨부해주시거나,신청서 작성후&nbsp;</b
+                                            ></span
+                                        >
+                                    </p>
+                                    <p style="text-align: center; color: rgb(51, 51, 51)">
+                                        <b>아래로 팩스 혹은 스캔하여 이메일 로 보완해주시면 됩니다.</b>
+                                    </p>
+                                    <p style="text-align: center; color: rgb(51, 51, 51)"><b>&nbsp;</b></p>
+                                    <p style="text-align: center; color: rgb(51, 51, 51)">
+                                        <b>고객센터 : 1600-6414</b>
+                                    </p>
+                                    <p style="text-align: center; color: rgb(51, 51, 51)"><b>FAX : 051-809-2210</b></p>
+                                    <p style="text-align: center" align="center">
+                                        <span style="background-color: rgb(255, 255, 255); color: rgb(51, 51, 51)"
+                                            ><b>E-mail : goldmobile@nate.com&#8203;&#8203; &#8203;</b></span
+                                        >&nbsp;
+                                    </p>
+                                    <p style="text-align: center" align="center">&nbsp;</p>
+                                    <p style="text-align: center" align="center">
+                                        --------------------------------------------------------------------
+                                    </p>
+                                    <p style="text-align: center" align="center">★본인인증가능</p>
+                                    <p style="text-align: center" align="center">★폰뱅킹가능</p>
+                                    <p style="text-align: center" align="center">★소액결제불가</p>
+                                    <p style="text-align: center" align="center">★컬러링불가</p>
+                                    <p style="text-align: center" align="center">★042-114등 정보이용료 발생통화불가</p>
+                                    <p style="text-align: center" align="center">★국제전화 요금제 별도 문의</p>
+                                    <p style="text-align: center" align="center">★자사 후불요금제로 변경 불가&nbsp;</p>
+                                    <p style="text-align: center" align="center">
+                                        [후불 신규로 가입 / 기존번호 사용 불가]
+                                    </p>
+                                    <p style="text-align: center" align="center">
+                                        --------------------------------------------------------------------&#8203;
+                                    </p>
+                                    <p style="text-align: center" align="center">&nbsp;</p>
+                                    <p style="text-align: center" align="center">
+                                        ■&#8203; 데이터 소진후 데이터속도 안내
+                                    </p>
+                                    <p style="text-align: center" align="center">
+                                        ( 기본데이터 소진후 무제한으로 제공되는 3Mbps 속도는 Youtube 재생시 720p 화질
+                                    </p>
+                                    <p style="text-align: center" align="center">
+                                        포털사이트/SNS/동영상/카카오톡/네이버스포츠영상 까지 원할하게 재생가능한
+                                        속도입니다.)
+                                    </p>
+                                    <p style="text-align: center" align="center">&nbsp;</p>
+                                    <p style="text-align: center" align="center">
+                                        유심 이용가능 휴대폰 [2014.07 출시이후모델]
+                                    </p>
+                                    <p style="text-align: center" align="center">
+                                        예) 삼성 갤럭시노트4 이후 아이폰6이후 LG AKA이후 출시된 휴대폰
+                                    </p>
+                                    <p style="text-align: center" align="center">&nbsp;</p>
+                                    <p style="text-align: center" align="center">&nbsp;</p>
+                                </div>
+                                <div style="font-weight: bold">
+                                    <input type="checkbox" name="condition_chk" id="condition_chk" /> 위 판매조건을
+                                    충분히 이해하였으며, 이에 동의합니다.
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- -->
+
+                    <table width="100%" class="otable2">
+                        <tr>
+                            <td class="title">신청자명</td>
+                            <td style="width: 35%">
+                                <input
+                                    type="text"
+                                    class="iptTxt13b"
+                                    maxlength="20"
+                                    name="uname"
+                                    id="uname"
+                                    value=""
+                                    style="ime-mode: active"
+                                />
+                            </td>
+                            <td class="title">&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="title">생년월일(6자리)</td>
+                            <td>
+                                <input
+                                    type="text"
+                                    class="iptTxt13b"
+                                    maxlength="6"
+                                    name="birth"
+                                    id="birth"
+                                    value=""
+                                    onKeyUp="return autoTab(this, 6, event);"
+                                />
+                                예) 800516
+                                <!-- - <input type="text" class="iptTxt13" size="8" maxlength="7" name="birth1" id="birth1" value=""/> -->
+                            </td>
+                            <td class="title">
+                                비상연락처<br /><span style="font-weight: normal">해피콜 받을 번호</span>
+                            </td>
+                            <td>
+                                <input
+                                    type="text"
+                                    class="iptTxt13b"
+                                    size="6"
+                                    maxlength="3"
+                                    name="hp2[]"
+                                    id="hp2[]"
+                                    value=""
+                                    onKeyUp="return autoTab(this, 3, event);"
+                                />
+                                -
+                                <input
+                                    type="text"
+                                    class="iptTxt13b"
+                                    size="6"
+                                    maxlength="4"
+                                    name="hp2[]"
+                                    id="hp2[]"
+                                    value=""
+                                    onKeyUp="return autoTab(this, 4, event);"
+                                />
+                                -
+                                <input
+                                    type="text"
+                                    class="iptTxt13b"
+                                    size="6"
+                                    maxlength="4"
+                                    name="hp2[]"
+                                    id="hp2[]"
+                                    value=""
+                                    onKeyUp="return autoTab(this, 4, event);"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="title">이메일</td>
+                            <td colspan="3">
+                                <input
+                                    type="text"
+                                    class="iptTxt13"
+                                    name="email"
+                                    id="email"
+                                    value=""
+                                    style="ime-mode: inactive; width: 95%"
+                                />
+                            </td>
+                        </tr>
+                        <script>
+                            function DaumPostcode() {
+                                new daum.Postcode({
+                                    oncomplete: function (data) {
+                                        // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                                        // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                                        // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                                        var fullAddr = ""; // 최종 주소 변수
+                                        var extraAddr = ""; // 조합형 주소 변수
+
+                                        // 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                                        if (data.userSelectedType === "R") {
+                                            // 사용자가 도로명 주소를 선택했을 경우
+                                            fullAddr = data.roadAddress;
+                                        } else {
+                                            // 사용자가 지번 주소를 선택했을 경우(J)
+                                            fullAddr = data.jibunAddress;
+                                        }
+
+                                        // 사용자가 선택한 주소가 도로명 타입일때 조합한다.
+                                        if (data.userSelectedType === "R") {
+                                            //법정동명이 있을 경우 추가한다.
+                                            if (data.bname !== "") {
+                                                extraAddr += data.bname;
+                                            }
+                                            // 건물명이 있을 경우 추가한다.
+                                            if (data.buildingName !== "") {
+                                                extraAddr +=
+                                                    extraAddr !== "" ? ", " + data.buildingName : data.buildingName;
+                                            }
+                                            // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
+                                            fullAddr += extraAddr !== "" ? " (" + extraAddr + ")" : "";
+                                        }
+
+                                        // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                                        document.getElementById("zip").value = data.zonecode; //5자리 새우편번호 사용
+                                        document.getElementById("addr1").value = fullAddr;
+
+                                        // 커서를 상세주소 필드로 이동한다.
+                                        document.getElementById("addr2").focus();
+                                    },
+                                }).open();
+                            }
+                        </script>
+                        <tr>
+                            <td rowspan="2" class="title">주소</td>
+                            <td colspan="3">
+                                <input
+                                    type="text"
+                                    class="iptTxt13"
+                                    size="20"
+                                    maxlength="20"
+                                    name="zip"
+                                    id="zip"
+                                    value=""
+                                />
+                                <img
+                                    src="http://smartadmin.negagea.kr/_image/bt/bt_serch_red.gif"
+                                    onclick="DaumPostcode()"
+                                    style="cursor: hand"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <input
+                                    type="text"
+                                    class="iptTxt13"
+                                    name="addr1"
+                                    id="addr1"
+                                    value=""
+                                    style="width: 50%"
+                                />
+                                <input
+                                    type="text"
+                                    class="iptTxt13"
+                                    name="addr2"
+                                    id="addr2"
+                                    value=""
+                                    style="width: 45%"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="title">희망번호 4자리</td>
+                            <td colspan="3" style="padding-left: 4px">
+                                ①<input
+                                    type="text"
+                                    class="iptTxt13"
+                                    size="6"
+                                    maxlength="4"
+                                    name="hpnumber[]"
+                                    id="hpnumber[]"
+                                    value=""
+                                    onKeyUp="return autoTab(this, 4, event);"
+                                />
+                                ②<input
+                                    type="text"
+                                    class="iptTxt13"
+                                    size="6"
+                                    maxlength="4"
+                                    name="hpnumber[]"
+                                    id="hpnumber[]"
+                                    value=""
+                                    onKeyUp="return autoTab(this, 4, event);"
+                                />
+                                ③<input
+                                    type="text"
+                                    class="iptTxt13"
+                                    size="6"
+                                    maxlength="4"
+                                    name="hpnumber[]"
+                                    id="hpnumber[]"
+                                    value=""
+                                    onKeyUp="return autoTab(this, 4, event);"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="title">추가 요청사항</td>
+                            <td colspan="3">
+                                <textarea
+                                    name="memo"
+                                    class="iptTxt13"
+                                    style="width: 97%; height: 40px; line-height: 1.2"
+                                ></textarea>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!-- 미성년자 여부확인 -->
+                    <table width="100%" class="otable">
+                        <tr>
+                            <td class="title">미성년자 여부확인</td>
+                            <td colspan="3">
+                                <input
+                                    name="minor"
+                                    type="radio"
+                                    value="N"
+                                    onclick="return selectAge(this.value)"
+                                    checked
+                                />본 가입자는 미성년자가 아닙니다.
+                                <input name="minor" type="radio" value="Y" onclick="return selectAge(this.value)" />본
+                                가입자는 미성년자 입니다.
+                            </td>
+                        </tr>
+                    </table>
+                    <div name="utr" id="utr" style="display: none">
+                        <table width="100%" class="otable">
+                            <tr>
+                                <td class="title">법정대리인 이름</td>
+                                <td style="width: 35%">
+                                    <input
+                                        type="text"
+                                        class="iptTxt13b"
+                                        maxlength="12"
+                                        name="parent"
+                                        id="parent"
+                                        value=""
+                                        style="ime-mode: active"
+                                    />
+                                </td>
+                                <td class="title">법정대리인 생년월일</td>
+                                <td style="width: 35%">
+                                    <input
+                                        type="text"
+                                        class="iptTxt13"
+                                        size="15"
+                                        maxlength="6"
+                                        name="parent_birth"
+                                        id="parent_birth"
+                                        value=""
+                                        onKeyUp="return autoTab(this, 6, event);"
+                                    />
+                                    예) 800516
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="title">법정대리인 연락처</td>
+                                <td>
+                                    <input
+                                        type="text"
+                                        class="iptTxt13b"
+                                        size="6"
+                                        maxlength="3"
+                                        name="parent_tel[]"
+                                        id="parent_tel[]"
+                                        value=""
+                                        onKeyUp="return autoTab(this, 3, event);"
+                                    />
+                                    -
+                                    <input
+                                        type="text"
+                                        class="iptTxt13b"
+                                        size="6"
+                                        maxlength="4"
+                                        name="parent_tel[]"
+                                        id="parent_tel[]"
+                                        value=""
+                                        onKeyUp="return autoTab(this, 4, event);"
+                                    />
+                                    -
+                                    <input
+                                        type="text"
+                                        class="iptTxt13b"
+                                        size="6"
+                                        maxlength="4"
+                                        name="parent_tel[]"
+                                        id="parent_tel[]"
+                                        value=""
+                                        onKeyUp="return autoTab(this, 4, event);"
+                                    />
+                                </td>
+                                <td class="title">가입자와의 관계</td>
+                                <td>
+                                    <input
+                                        type="text"
+                                        class="iptTxt13b"
+                                        size="10"
+                                        maxlength="15"
+                                        name="parent_rel"
+                                        id="parent_rel"
+                                        value=""
+                                        style="ime-mode: active"
+                                    />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- 번호이동에만 보이기 -->
+                    <!-- 기변의 경우 요금청구항목 받지 않음-->
+                    <table width="100%" class="otable2">
+                        <tr>
+                            <td class="title">요금청구방법</td>
+                            <td>
+                                <select
+                                    name="pay_gubun"
+                                    class="select"
+                                    style="height: 24px; margin-left: 3px; margin-top: 3px; margin-bottom: 3px"
+                                >
+                                    <option>계좌이체</option></select
+                                >&nbsp;<input type="checkbox" name="checkbox" id="checkbox" onclick="setaddr1()" />
+                                가입정보 주소와 동일합니다.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="title">요금확인방법</td>
+                            <td>
+                                <input type="radio" name="pay_method" name="id" value="문자청구서" />문자청구서
+                                <input type="radio" name="pay_method" name="id" value="이메일청구서" />이메일청구서
+                                <input
+                                    type="radio"
+                                    name="pay_method"
+                                    name="id"
+                                    value="기타(우편청구서)"
+                                    checked
+                                />기타(우편청구서)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2" class="title">요금청구 주소</td>
+                            <td>
+                                <input
+                                    type="text"
+                                    class="iptTxt13"
+                                    size="20"
+                                    maxlength="20"
+                                    name="pzip"
+                                    id="pzip"
+                                    value=""
+                                />
+                                <img
+                                    src="http://smartadmin.negagea.kr/_image/bt/bt_serch_red.gif"
+                                    onclick="DaumPostcodeP()"
+                                    style="cursor: hand; width: 47px"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input
+                                    type="text"
+                                    class="iptTxt13"
+                                    name="paddr1"
+                                    id="paddr1"
+                                    value=""
+                                    style="width: 50%"
+                                />
+                                <input
+                                    type="text"
+                                    class="iptTxt13"
+                                    size="40"
+                                    name="paddr2"
+                                    id="paddr2"
+                                    value=""
+                                    style="width: 45%"
+                                />
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- -->
+
+                    <table width="100%" class="otable2">
+                        <tr>
+                            <td class="title">은행명</td>
+                            <td style="width: 35%">
+                                <input type="text" class="iptTxt13" size="30" name="bank" id="bank" value="" />
+                            </td>
+                            <td class="title">계좌번호</td>
+                            <td>
+                                <input type="text" class="iptTxt13" size="30" name="banknum" id="banknum" value="" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="title">예금주</td>
+                            <td>
+                                <input
+                                    type="text"
+                                    class="iptTxt13"
+                                    size="20"
+                                    maxlength="4"
+                                    name="bankowner"
+                                    id="bankowner"
+                                    value=""
+                                    style="ime-mode: active"
+                                />
+                            </td>
+                            <td class="title">가입자와의 관계</td>
+                            <td>
+                                <input
+                                    type="text"
+                                    class="iptTxt13"
+                                    size="20"
+                                    maxlength="6"
+                                    name="owner_real"
+                                    id="owner_real"
+                                    value=""
+                                    style="ime-mode: active"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="title">예금주<br />생년월일(6자리)</td>
+                            <td colspan="3">
+                                <input
+                                    type="text"
+                                    class="iptTxt13"
+                                    maxlength="6"
+                                    name="owner_birth"
+                                    id="owner_birth"
+                                    value=""
+                                    onKeyUp="return autoTab(this, 6, event);"
+                                />
+                                <div style="margin: 5px">
+                                    <span
+                                        >※ 자동이체 정보는 은행계좌로만 입력해 주셔야 합니다. ( 신용카드 입력 절대 불가!
+                                        추후 신용카드로 변경 가능 )</span
+                                    >
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- -->
+                    <table width="100%" class="otable">
+                        <tr>
+                            <td class="title">수령인</td>
+                            <td style="width: 35%">
+                                <input
+                                    type="text"
+                                    class="iptTxt13b"
+                                    maxlength="40"
+                                    name="rname"
+                                    id="rname"
+                                    value=""
+                                    style="ime-mode: active"
+                                />
+                            </td>
+                            <td class="title" style="width: 135px">배송지 연락처</td>
+                            <td>
+                                <input
+                                    type="text"
+                                    class="iptTxt13b"
+                                    size="6"
+                                    maxlength="3"
+                                    name="rhp[]"
+                                    id="rhp[]"
+                                    value=""
+                                    onKeyUp="return autoTab(this, 3, event);"
+                                />
+                                -
+                                <input
+                                    type="text"
+                                    class="iptTxt13b"
+                                    size="6"
+                                    maxlength="4"
+                                    name="rhp[]"
+                                    id="rhp[]"
+                                    value=""
+                                    onKeyUp="return autoTab(this, 4, event);"
+                                />
+                                -
+                                <input
+                                    type="text"
+                                    class="iptTxt13b"
+                                    size="6"
+                                    maxlength="4"
+                                    name="rhp[]"
+                                    id="rhp[]"
+                                    value=""
+                                    onKeyUp="return autoTab(this, 4, event);"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td rowspan="3" class="title">택배수령 주소</td>
+                            <td colspan="3">
+                                <input type="checkbox" name="checkbox" id="checkbox" onclick="setaddr()" /> 가입정보
+                                주소와 동일합니다.
+                            </td>
+                        </tr>
+                        <script>
+                            function DaumPostcodeR() {
+                                new daum.Postcode({
+                                    oncomplete: function (data) {
+                                        // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                                        // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                                        // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                                        var fullAddr = ""; // 최종 주소 변수
+                                        var extraAddr = ""; // 조합형 주소 변수
+
+                                        // 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                                        if (data.userSelectedType === "R") {
+                                            // 사용자가 도로명 주소를 선택했을 경우
+                                            fullAddr = data.roadAddress;
+                                        } else {
+                                            // 사용자가 지번 주소를 선택했을 경우(J)
+                                            fullAddr = data.jibunAddress;
+                                        }
+
+                                        // 사용자가 선택한 주소가 도로명 타입일때 조합한다.
+                                        if (data.userSelectedType === "R") {
+                                            //법정동명이 있을 경우 추가한다.
+                                            if (data.bname !== "") {
+                                                extraAddr += data.bname;
+                                            }
+                                            // 건물명이 있을 경우 추가한다.
+                                            if (data.buildingName !== "") {
+                                                extraAddr +=
+                                                    extraAddr !== "" ? ", " + data.buildingName : data.buildingName;
+                                            }
+                                            // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
+                                            fullAddr += extraAddr !== "" ? " (" + extraAddr + ")" : "";
+                                        }
+
+                                        // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                                        document.getElementById("rzip").value = data.zonecode; //5자리 새우편번호 사용
+                                        document.getElementById("raddr1").value = fullAddr;
+
+                                        // 커서를 상세주소 필드로 이동한다.
+                                        document.getElementById("raddr2").focus();
+                                    },
+                                }).open();
+                            }
+                        </script>
+                        <tr>
+                            <td colspan="3">
+                                <input
+                                    type="text"
+                                    class="iptTxt13"
+                                    size="20"
+                                    maxlength="20"
+                                    name="rzip"
+                                    id="rzip"
+                                    value=""
+                                />
+                                <img
+                                    src="http://smartadmin.negagea.kr/_image/bt/bt_serch_red.gif"
+                                    onclick="DaumPostcodeR()"
+                                    style="cursor: hand; width: 47px"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <input
+                                    type="text"
+                                    class="iptTxt13"
+                                    name="raddr1"
+                                    id="raddr1"
+                                    value=""
+                                    style="width: 50%"
+                                />
+                                <input
+                                    type="text"
+                                    class="iptTxt13"
+                                    name="raddr2"
+                                    id="raddr2"
+                                    value=""
+                                    style="width: 45%"
+                                />
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- -->
+                    <div class="noprint" style="margin: 0px auto">
+                        <!-- 프린트X-->
+                        <table width="100%" class="otable">
+                            <tr>
+                                <td class="title">구비서류 접수방법</td>
+                                <td style="width: 85%">
+                                    <input name="paper_method" type="radio" checked="checked" value="file" /> 파일첨부
+                                    <input name="paper_method" type="radio" value="email" /> 이메일
+                                    <input name="paper_method" type="radio" value="fax" /> 팩스
+                                </td>
+                            </tr>
+                            <tr name="btr" id="btr">
+                                <td class="title">파일첨부1</td>
+                                <td><input type="file" name="b_file[]" value="" style="width: 90%" /></td>
+                            </tr>
+                            <tr name="btr" id="btr">
+                                <td class="title">파일첨부2</td>
+                                <td><input type="file" name="b_file[]" value="" style="width: 90%" /></td>
+                            </tr>
+                            <tr name="btr" id="btr">
+                                <td class="title">파일첨부3</td>
+                                <td><input type="file" name="b_file[]" value="" style="width: 90%" /></td>
+                            </tr>
+                            <tr name="btr" id="btr">
+                                <td class="title">주의사항</td>
+                                <td>
+                                    <!--2017-06-19 정--><img
+                                        src="http://bnkmvno.com/ment2_bnk.png"
+                                        style="width: 98%; max-width: 670px"
+                                    />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- -->
+                    <div class="noprint" style="margin: 0px auto">
+                        <!-- 프린트X-->
+                        <table width="100%" class="otable">
+                            <tr>
+                                <td class="title">약정관련 안내</td>
+                                <td style="width: 85%">
+                                    <div
+                                        style="
+                                            width: 97%;
+                                            height: 70px;
+                                            margin: 5 0px;
+                                            overflow-y: scroll;
+                                            border: 1px #e5e5e5 solid;
+                                            padding: 10px;
+                                        "
+                                    >
+                                        1. 최소회선유지기간(186일)이내 일시정지, 명의변경, 기기변경,번호이동은
+                                        불가합니다. <br />
+                                        2. 가입요금제 93일이내변경,무통화,일시정지, 명의변경, 기기변경, 타사 번호이동시
+                                        위약금 청구됩니다.<br />
+                                        3. 불법 대포폰 신청및 폰파라치 신고 목적등 (불편법구매) 당사에 과징금 및 손해를
+                                        입혔을 시 <br />
+                                        이에 상응하는 피해금액을 청구합니다.<br />
+                                        4. 개통후 3개월간 발신통화는 매월 5분이상 발신되어야 합니다.
+                                        (불편법구매방지목적)<br />
+                                        <br />
+                                        본인은 위 내용을 숙지하였으며, 이에 동의합니다.
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="title">약관 동의서 및<br />개인정보 취급방침</td>
+                                <td>
+                                    <div
+                                        style="
+                                            width: 97%;
+                                            height: 88px;
+                                            margin: 5 0px;
+                                            overflow-y: scroll;
+                                            border: 1px #e5e5e5 solid;
+                                            padding: 10px;
+                                        "
+                                    >
+                                        약관동의서 및 개인정보 취급방침<br />
+                                        <br />
+                                        본 신청서에 기재된 본인의 정보 및 서비스 이용과정에서 생성되는 본인의 정보는 ,
+                                        및 의 규정에 따라 휴대폰 개통및 서비스 목적으로 귀사가 수집,<br />
+                                        이용, 제공 및 취급 위탁을 위해 본인의 동의를 얻거나 본인에게 위 내용을
+                                        고지ㆍ공개하여야 하는 정보입니다.<br />
+                                        이에 본인은 귀사의 이동전화 서비스, 부가서비스 및 개인맞춤서비스, 마케팅정보
+                                        제공서비스 등을 제공받기 위해 다음의 내용을 확인하고, 귀사가 본인의
+                                        개인정보ㆍ신용정보를 다음과같이 수집, 이용 제공 및 취급위탁하는 것에
+                                        동의합니다.<br />
+                                        <br />
+                                        *귀사는 개통과 관련되지 않은 마케팅 및 선택적인 동의에 대한 고객정보를 제공하지
+                                        않습니다.*<br />
+                                        *개통후 3개월까지 가입정보는 보관되며, 3개월이후 가입에 관한 내역은 지체없이
+                                        파기합니다.*<br />
+                                        <br />
+                                        1. 개인정보 수집ㆍ이용동의 및 판매조건 동의<br />
+                                        <br />
+                                        (SK텔레콤㈜,KT(주),LG텔레콤(주)귀중),MVNO(알뜰폰)등의 가입통신사에 제공.<br />
+                                        가. 개인정보의 수집ㆍ이용 목적<br />
+                                        (1) 서비스 제공 및 본인식별 등 : 이동전화서비스, 멤버쉽 서비스, 부가서비스,
+                                        통신과금서비스, 제휴서비스, 개인맞춤서비스, 광고서비스, 본인확인서비스 등
+                                        제반서비스(이하 ‘서비스’) 제공 및 이와 관련된 본인 확인 또는 인증,
+                                        결제절차진행(통신과금서비스), 통화품질 조사 등 서비스 품질 확인, 정상개통 여부
+                                        확인 및 미납 안내 등<br />
+                                        <br />
+                                        서비스 제공 관련 연락<br />
+                                        (2) 서비스 관련 정보 제공 등 : 상품 배송, 고지사항 전달, 본인의사 확인, 서비스
+                                        관련 상담·불만 처리,<br />
+                                        서비스 이용관련 혜택·유의사항·편의사항 등 정보 제공, 신규 서비스나 이벤트 관련
+                                        정보 및 광고 전송<br />
+                                        (3) 요금 정산 및 과금 : '서비스' 이용 요금 정산·청구·수납·자동이체·추심, 청구서
+                                        송부, 요금 관련<br />
+                                        상담·불만 처리, 요금관련 혜택·유의사항·편의사항 등 정보 제공, 신규서비스나
+                                        이벤트 관련정보 및 광고전송<br />
+                                        (4) 통계분석 : 개인을 식별할 수 없는 인구통계학적 분석자료 또는<br />
+                                        지역·시장 조사 자료(연령별, 성별, 지역별 통계분석, 시장조사 등) 등 작성, 이용,
+                                        제공<br />
+                                        (5) 개인 맞춤서비스 제공 : 개인정보, 위치정보, 생성정보 및 이를 조합·분석한
+                                        정보를 이용한,<br />
+                                        요금제 등의 상품 및 서비스 개발 / 서비스 가입 신청·이용 중 문의 등 제반 고객
+                                        응대 시<br />
+                                        고객 맞춤 상담 제공 / 개인 맞춤 상품 서비스 혜택 또는 개인 맞춤 광고 제안 및
+                                        제공 /<br />
+                                        악성코드 분석·차단 서비스 제공 / 분실 단말 관리 서비스 제공<br />
+                                        <br />
+                                        나. 수집하는 개인정보의 항목<br />
+                                        (1) 식별정보 : 성명(법인명), 주민(법인)등록번호, 여권번호, 외국인등록번호,
+                                        전화번호, 주민등록번호 대체수단<br />
+                                        (2) 연락처정보 : 주소, 전화번호, e-mail 주소<br />
+                                        (3) 거래정보 : 통신과금서비스 제공에 필요한 거래정보<br />
+                                        (4) 계좌정보 : 계좌(카드)번호, 예금주명 등<br />
+                                        (5) 생성정보 : 발·수신번호(통화상대방번호 포함), 통화시각, 사용도수,
+                                        서비스이용기록, 접속로그, 쿠키,<br />
+                                        접속 IP 정보(도메인 주소 정보 및 접속 URL 정보 포함), 결제기록, 이용정지기록,
+                                        멤버쉽 정보(멤버쉽 가입고객에 한함),<br />
+                                        기타 요금 과금에 필요한 데이터 및 이를 조합하여 생성되는 정보(요약개인정보,
+                                        데이터마이닝 분석 및<br />
+                                        고객세분화 정보, 선호도, 라이프스타일, 사회적관계 추정 정보), Application
+                                        사용관련 정보(사용 App.정보, 사용량 등)<br />
+                                        (6) 기타 서비스 제공 관련 필요 정보 : 2.에 따른 개인위치정보, 단말기 정보(모델,
+                                        IMEI번호, USIM 번호(ICCID, IMSI 등),<br />
+                                        단말기 S/W버전 정보, MAC Address 등), 직업, 국가유공자 증명·복지할인 증명 등
+                                        각종 증명,<br />
+                                        부가서비스·번호이동·할부매매계약 내역, 이동전화 서비스 가입 및 해지일·이동전화
+                                        가입 기간 등<br />
+                                        (5) 생성정보 : 발·수신번호(통화상대방번호 포함), 통화시각, 사용도수,
+                                        서비스이용기록, 접속로그, 쿠키,<br />
+                                        접속 IP 정보, 결제기록, 이용정지기록, 멤버쉽 정보(멤버쉽 가입고객에 한함),<br />
+                                        기타 요금 과금에 필요한 데이터 및 이를 조합하여 생성되는 정보(요약개인정보,
+                                        데이터마이닝 분석 및<br />
+                                        고객세분화 정보, 선호도, 라이프스타일, 사회적관계 추정 정보),<br />
+                                        Application 사용관련 정보(사용 App.정보, 사용량 등)<br />
+                                        (6) 기타 서비스 제공 관련 필요 정보 : 2.에 따른 개인위치정보, 단말기 정보(모델,
+                                        IMEI번호,<br />
+                                        USIM 번호(ICCID, IMSI 등), 단말기 S/W버전 정보 등), 직업, 국가유공자
+                                        증명·복지할인 증명 등<br />
+                                        각종 증명, 부가서비스·번호이동·할부매매계약 내역, 이동전화 서비스 가입 및
+                                        해지일·이동전화 가입 기간 등<br />
+                                        ※ 위 정보는 가입 당시 정보 뿐만 아니라 정보 수정으로 변경된 정보를 포함합니다<br />
+                                        <br />
+                                        다. 개인정보의 보유기간<br />
+                                        개인정보를 제공받은 제3자는 개인정보의 수집목적 또는 제공받은 목적을 달성한
+                                        때에는 당해<br />
+                                        개인정보를 지체없이 파기합니다.(최대 보유기간은 3개월로한다)<br />
+                                        <br />
+                                        <br />
+                                        가. 법령에 따로 정하는 경우에는 해당 기간까지 보유<br />
+                                        나. 요금 관련 분쟁 해결을 위해 해지 후 6개월까지<br />
+                                        (단, 해지고객이 이용요금을 납부하지 않았거나 요금 관련 분쟁이 계속될 경우에는
+                                        해결시까지)<br />
+                                        <br />
+                                        2.통신사의 정책변경 및 기기입고 불가등 불가항적인 요소의 정책변경등으로 서비스의
+                                        취소 및 판매 취소를 할수 있다.<br />
+                                        <br />
+                                        <br />
+                                        - 본 상품의 배송 진행관련 정보를 문자로 구매자에게 통보할수있다<br />
+                                        - 본 상품의 개통을 한 고객대상 안내 문자 및 마케팅문자를 발송할수있다(단 고객이
+                                        원하지않을경우 발송을 중단한다.)<br />
+                                        <br />
+                                        <br />
+                                        <br />
+                                        * 계약의 이행을 위한 개인정보 취급위탁 내역은 <br />
+                                        통신사 홈페이지(www.sktelecom.com) (http://www.kt.com/main.jsp)
+                                        (http://www.uplus.co.kr/)의 개인정보취급방침에서 모두 공개하고 있습니다.<br />
+                                        <br />
+                                        본인은 위 1항,2항의 내용을 숙지하였으며, 이에 동의합니다.
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="title">동의 여부</td>
+                                <td>
+                                    <input type="checkbox" name="yak_chk" id="yak_chk" /> 약관 동의서 및 개인정보
+                                    취급방침에 동의합니다.<br /><input type="checkbox" name="hap_chk" id="hap_chk" /> 위
+                                    내용을 확인하고 동의합니다.
+                                </td>
+                            </tr>
+                        </table>
+                        <!-- 버튼set -->
+                        <div style="height: 30px"></div>
+                        <input
+                            type="image"
+                            src="http://smartadmin.negagea.kr/_image/bt/bt_order.gif"
+                            alt="가입신청 작성완료"
+                        />
+                        <div style="height: 50px"></div>
+                    </div>
+                    <!-- 프린트X-->
+                </form>
+            </div>
+            <!-- body960-->
+        </div>
+        <!-- body-->
+    </body>
+</html>
